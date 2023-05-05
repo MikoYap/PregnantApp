@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'bottom_nav_app.dart';
-
+import 'package:pregnant_app/pages/bottom_nav_app.dart';
 
 
 void main() {
