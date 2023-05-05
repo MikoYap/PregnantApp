@@ -127,7 +127,8 @@ class _BottomNavAppState extends State<BottomNavApp> {
                           'Delivery Mode',
                           style: TextStyle(
                               fontSize: 12,
-                              color: currentTab == 2 ? Color(0xFFD1B7A1) : Colors.grey),
+                              color: currentTab == 2 ? Color(0xFFD1B7A1) : Colors.grey
+                          ),
                         )
                       ],
                     ),
