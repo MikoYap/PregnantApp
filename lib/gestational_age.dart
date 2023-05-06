@@ -16,7 +16,6 @@ class _GestationalAgeState extends State<GestationalAge> {
   final _formKey = GlobalKey<FormState>();
   var sgaOutput;
   String age = "";
-  String eth = "";
   String bd = "";
   String hc = "";
   String tcd = "";
@@ -36,10 +35,10 @@ class _GestationalAgeState extends State<GestationalAge> {
     final interpreter = await Interpreter.fromAsset('tflite/sga.tflite');
 
     var input = [
-      [double.parse(age), double.parse(eth), double.parse(bd), double.parse(hc),
-    double.parse(tcd), double.parse(cm), double.parse(efw), double.parse(nft),
-    double.parse(ac), double.parse(fl), double.parse(ahlv), double.parse(phlv),
-    double.parse(fch), double.parse(uari), double.parse(uapi)]
+      [double.parse(age), double.parse(bd), double.parse(hc), double.parse(tcd),
+        double.parse(cm), double.parse(efw), double.parse(nft), double.parse(ac),
+        double.parse(fl), double.parse(ahlv), double.parse(phlv), double.parse(fch),
+        double.parse(uari), double.parse(uapi)]
     ];
 
     var output = List.filled(1, 0).reshape([1, 1]);
@@ -587,18 +586,6 @@ class _GestationalAgeState extends State<GestationalAge> {
                         );
                       },
                     ),
-
-                    /*MaterialButton(
-                      color: Color(0xFF6F5651),
-                      child: Text(
-                        "predict",
-                        style: TextStyle(
-                            color: Colors.white, fontSize: 25
-                        ),
-                      ),
-                      onPressed: model,
-
-                    ),*/
                   ],
                 ),
 
