@@ -16,31 +16,30 @@ class _DeliveryModeState extends State<DeliveryMode> {
   var modeOutput;
   String age = "";
   String heig = "";
-  String pos = "";
-  String plac = "";
-  String hyper = "";
-  String amn = "";
-  String diab = "";
+  int pos = 0;
+  int plac = 0;
+  int hyper = 0;
+  int amn = 0;
+  int diab = 0;
 
-  List<bool> _selectedPosition = <bool>[false, false, false];
-  List<bool> _selectedPlacenta = <bool>[false, false];
-  List<bool> _selectedHypertension = <bool>[false, false];
-  List<bool> _selectedAmnFluid = <bool>[false, false];
-  List<bool> _selectedDiabetes = <bool>[false, false];
+  List<bool> _selectedPosition = <bool>[true, false, false];
+  List<bool> _selectedPlacenta = <bool>[true, false];
+  List<bool> _selectedHypertension = <bool>[true, false];
+  List<bool> _selectedAmnFluid = <bool>[true, false];
+  List<bool> _selectedDiabetes = <bool>[true, false];
 
   Future<void> model() async {
-    final interpreter = await Interpreter.fromAsset('tflite/sga.tflite');
+    final interpreter = await Interpreter.fromAsset('tflite/delivery_mode.tflite');
 
     var input = [
-      [double.parse(age), double.parse(heig), double.parse(pos), double.parse(plac), double.parse(hyper), double.parse(amn),
-        double.parse(amn), double.parse(diab)]
+      [int.parse(age), int.parse(heig), pos, plac, hyper, amn, diab]
     ];
+    print(input);
 
-    var output = List.filled(1 * 3, 0).reshape([1, 3]);
+    var output = List.filled(3, 0).reshape([1, 3]);
+    print(output);
     interpreter.run(input, output);
-    /*modeOutput = (output[0][0] * 100).toStringAsFixed(1) + '%';
-    modeOutput = modeOutput.toString();*/
-    print(modeOutput);
+    print(output);
   }
 
   @override
@@ -75,7 +74,8 @@ class _DeliveryModeState extends State<DeliveryMode> {
             child: Column(
               children: [
                 Text(
-                  "Please provide relevant information to monitor your childbirth delivery method.",
+                  "Please provide relevant information to monitor your childbirth "
+                      "delivery method.",
                   style: TextStyle(
                     fontSize: 16,
                   ),
@@ -166,8 +166,8 @@ class _DeliveryModeState extends State<DeliveryMode> {
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   selectedBorderColor: Color(0xFF6F5651),
                   selectedColor: Colors.white,
-                  fillColor: Colors.green[200],
-                  color: Colors.grey,
+                  fillColor: Color(0xFF957B75),
+                  color: Colors.black38,
                   constraints: const BoxConstraints(
                     minHeight: 40.0,
                     minWidth: 80.0,
@@ -177,8 +177,8 @@ class _DeliveryModeState extends State<DeliveryMode> {
                       // The button that is tapped is set to true, and the others to false.
                       for (int i = 0; i < _selectedPosition.length; i++) {
                         _selectedPosition[i] = i == index;
-                        pos = i as String;
                       }
+                      pos = index;
                     });
                   },
                 ),
@@ -203,19 +203,19 @@ class _DeliveryModeState extends State<DeliveryMode> {
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   selectedBorderColor: Color(0xFF6F5651),
                   selectedColor: Colors.white,
-                  fillColor: Colors.green[200],
-                  color: Colors.grey,
+                  fillColor: Color(0xFF957B75),
+                  color: Colors.black38,
                   constraints: const BoxConstraints(
                     minHeight: 40.0,
-                    minWidth: 120.0,
+                    minWidth: 150.0,
                   ),
                   onPressed: (int index) {
                     setState(() {
                       // The button that is tapped is set to true, and the others to false.
                       for (int i = 0; i < _selectedPlacenta.length; i++) {
                         _selectedPlacenta[i] = i == index;
-                        plac = i as String;
                       }
+                      plac = index;
                     });
                   },
                 ),
@@ -240,8 +240,8 @@ class _DeliveryModeState extends State<DeliveryMode> {
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   selectedBorderColor: Color(0xFF6F5651),
                   selectedColor: Colors.white,
-                  fillColor: Colors.green[200],
-                  color: Colors.grey,
+                  fillColor: Color(0xFF957B75),
+                  color: Colors.black38,
                   constraints: const BoxConstraints(
                     minHeight: 40.0,
                     minWidth: 80.0,
@@ -251,8 +251,8 @@ class _DeliveryModeState extends State<DeliveryMode> {
                       // The button that is tapped is set to true, and the others to false.
                       for (int i = 0; i < _selectedHypertension.length; i++) {
                         _selectedHypertension[i] = i == index;
-                        hyper = i as String;
                       }
+                      hyper = index;
                     });
                   },
                 ),
@@ -277,8 +277,8 @@ class _DeliveryModeState extends State<DeliveryMode> {
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   selectedBorderColor: Color(0xFF6F5651),
                   selectedColor: Colors.white,
-                  fillColor: Colors.green[200],
-                  color: Colors.grey,
+                  fillColor: Color(0xFF957B75),
+                  color: Colors.black38,
                   constraints: const BoxConstraints(
                     minHeight: 40.0,
                     minWidth: 80.0,
@@ -288,8 +288,8 @@ class _DeliveryModeState extends State<DeliveryMode> {
                       // The button that is tapped is set to true, and the others to false.
                       for (int i = 0; i < _selectedAmnFluid.length; i++) {
                         _selectedAmnFluid[i] = i == index;
-                        amn = i as String;
                       }
+                      amn = index;
                     });
                   },
                 ),
@@ -314,8 +314,8 @@ class _DeliveryModeState extends State<DeliveryMode> {
                   borderRadius: const BorderRadius.all(Radius.circular(8)),
                   selectedBorderColor: Color(0xFF6F5651),
                   selectedColor: Colors.white,
-                  fillColor: Colors.green[200],
-                  color: Colors.grey,
+                  fillColor: Color(0xFF957B75),
+                  color: Colors.black38,
                   constraints: const BoxConstraints(
                     minHeight: 40.0,
                     minWidth: 80.0,
@@ -325,8 +325,8 @@ class _DeliveryModeState extends State<DeliveryMode> {
                       // The button that is tapped is set to true, and the others to false.
                       for (int i = 0; i < _selectedDiabetes.length; i++) {
                         _selectedDiabetes[i] = i == index;
-                        diab = i as String;
                       }
+                      diab = index;
                     });
                   },
                 ),
@@ -346,10 +346,10 @@ class _DeliveryModeState extends State<DeliveryMode> {
                       ),
                       onPressed: () {
                         model();
-                        Navigator.push(
+                        /*Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => ModeResult(moderesult: modeOutput))
-                        );
+                        );*/
                       },
                     ),
                   ],

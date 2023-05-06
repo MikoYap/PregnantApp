@@ -43,7 +43,6 @@ dependencies:
   tflite_flutter: ^0.9.4
 
   tflite: ^1.1.2
-  camera: ^0.10.5
   image_picker: ^0.8.7+4
 
 
@@ -71,14 +70,23 @@ flutter:
 
   assets:
     - assets/images/foetus.png
+    - assets/images/cloud.png
+    - assets/images/appLogo_white.png
+    - assets/images/background.jpeg
     - assets/tflite/sga.tflite
+    - assets/tflite/delivery_mode.tflite
     - assets/tflite/food_scanner_model.tflite
+    - assets/tflite/food_detection_model.tflite
     - assets/tflite/label.txt
 
   fonts:
     - family: RockSalt
       fonts:
         - asset: assets/fonts/RockSalt.ttf
+
+    - family: MarckScript
+      fonts:
+        - asset: assets/fonts/MarckScript.ttf
 
 
   # To add assets to your application, add an assets section, like this:
