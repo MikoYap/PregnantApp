@@ -34,6 +34,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.orange,
       ),
       home: _showSplashScreen ? SplashScreen() : BottomNavApp(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -64,7 +65,7 @@ class SplashScreen extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height / 2 - 230,
+            top: MediaQuery.of(context).size.height / 2 - 200,
             left: MediaQuery.of(context).size.width / 2 - 150,
             child: Image.asset(
               "assets/images/appLogo_white.png",

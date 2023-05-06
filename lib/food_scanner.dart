@@ -36,7 +36,7 @@ class _FoodScannerState extends State<FoodScanner> {
   classifyImage(File image) async {
     var output = await Tflite.runModelOnImage(
       path: image.path,
-      numResults: 4,
+      numResults: 6,
       threshold: 0.5,
       imageMean: 127.5,
       imageStd: 127.5,
@@ -49,7 +49,7 @@ class _FoodScannerState extends State<FoodScanner> {
 
   loadModel() async {
     await Tflite.loadModel(
-      model: "assets/tflite/food_scanner_model.tflite",
+      model: "assets/tflite/Food_sixclass.tflite",
       labels: "assets/tflite/label.txt",
     );
   }
@@ -138,14 +138,18 @@ class _FoodScannerState extends State<FoodScanner> {
                                     ),
 
                                     Text(
-                                      _output[0]['label'] == 'Donut'
-                                          ? 'Calories: 374\nFats: 16g\nProtein: 3.9g\nCarb: 53g'
-                                          : _output[0]['label'] == 'Salad'
-                                          ? 'Calories: 20\nFats: 0g\nProtein: 2g\nCarb: 3g\nFiber: 2g'
-                                          : _output[0]['label'] == 'Object'
-                                          ? 'Nothing'
-                                          : _output[0]['label'] == 'Steak'
-                                          ? 'Calories: 179\nFats: 7.6g\nProtein: 26g\nCarb: 0g\n'
+                                      _output[0]['label'] == 'chocolate cake'
+                                          ? '100g:\n- Calories: 360\n- Fats: 15.1g\n- Carb: 53.4g\n- Chol: 58mg\n- Protein: 5.3g'
+                                          : _output[0]['label'] == 'curry'
+                                          ? '1cup:\n- Calories: 243\n- Fats: 11g\n- Carb: 7.5g\n- Chol: 74mg\n- Protein: 28g'
+                                          : _output[0]['label'] == 'donut'
+                                          ? '100g:\n- Calories: 374\n- Fats: 16g\n- Carb: 53g\n- Chol: 35mg\n- Protein: 15g'
+                                          : _output[0]['label'] == 'hamburger'
+                                          ? '218g:\n- Calories: 512\n- Fats: 27g\n- Carb: 40g\n- Chol: 87mg\n- Protein: 26g'
+                                          : _output[0]['label'] == 'salad'
+                                          ? '1/4cup:\n- Calories: 156\n- Fats: 12g\n- Carb: 0g\n- Chol: 14mg\n- Protein: 5g'
+                                          : _output[0]['label'] == 'steak'
+                                          ? '221g:\n- Calories: 614\n- Fats: 41g\n- Carb: 0g\n- Chol: 214mg\n- Protein: 58g'
                                           : "",
                                       style: TextStyle(
                                         color: Colors.black,
