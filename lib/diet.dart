@@ -12,12 +12,6 @@ class Diet extends StatefulWidget {
 class _DietState extends State<Diet> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(
-        "Diet",
-        style: TextStyle(
-          fontSize: 40,
-        ),
-      ),
-    );  }
+    return const Placeholder();
+  }
 }

@@ -10,14 +10,13 @@ class DeliveryMode extends StatefulWidget {
 }
 
 class _DeliveryModeState extends State<DeliveryMode> {
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Center(
       child: Text(
         "Delivery Mode",
-        style: TextStyle(
-          fontSize: 40,
-        ),
+          style: TextStyle(fontSize: 25),
       ),
     );
   }

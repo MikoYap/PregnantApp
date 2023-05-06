@@ -3,6 +3,7 @@ import 'home.dart';
 import 'gestational_age.dart';
 import 'delivery_mode.dart';
 import 'diet.dart';
+import 'food_scanner.dart';
 
 
 
@@ -27,16 +28,58 @@ class _BottomNavAppState extends State<BottomNavApp> {
 
   @override
   Widget build(BuildContext context) {
+
+    bool showFab = MediaQuery.of(context).viewInsets.bottom != 0;
+
     return Scaffold(
       body: PageStorage(
         child: currentScreen,
         bucket: bucket,
       ),
 
+      floatingActionButton: Visibility(
+        visible: !showFab,
+        child: Container(
+          alignment: Alignment.bottomCenter,
+          padding: EdgeInsets.only(bottom: 5),
+          child: FloatingActionButton(
+            heroTag: "foodScannerFab",
+            child: Container(
+              width: 60,
+              height: 60,
+              child: Icon(
+                  Icons.fastfood,
+                  color: Colors.white,
+                  size: 25,
+              ),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color(0xFF6F5651),
+              ),
+            ),
+
+            onPressed: () {
+              setState(() {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const FoodScanner()
+                    )
+                );
+              });
+            },
+
+          ),
+        ),
+
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+
       bottomNavigationBar: BottomAppBar(
+        color: Color(0xFFEED0CA),
         child: Container(
           height: 60,
-          padding: EdgeInsets.symmetric(horizontal: 5),
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget> [
@@ -46,7 +89,7 @@ class _BottomNavAppState extends State<BottomNavApp> {
                 children: [
                   // Home icon
                   MaterialButton(
-                    padding: EdgeInsets.symmetric(horizontal: 14),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
@@ -59,22 +102,22 @@ class _BottomNavAppState extends State<BottomNavApp> {
                       children: [
                         Icon(
                           Icons.home_rounded,
-                          size: 20,
-                          color: currentTab == 0 ? Color(0xFFD1B7A1) : Colors.grey,
+                          size: 30,
+                          color: currentTab == 0 ? Color(0xFF6F5651) : Colors.grey,
                         ),
-                        Text(
-                          '  Home  ',
+                        /*Text(
+                          'Home',
                           style: TextStyle(
                               fontSize: 12,
-                              color: currentTab == 0 ? Color(0xFFD1B7A1) : Colors.grey),
-                        )
+                              color: currentTab == 0 ? Color(0xFFF8CBA6) : Colors.grey),
+                        )*/
                       ],
                     ),
                   ),
 
                   // Gestational Age icon
                   MaterialButton(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
@@ -87,15 +130,15 @@ class _BottomNavAppState extends State<BottomNavApp> {
                       children: [
                         Icon(
                           Icons.calendar_month_outlined,
-                          size: 20,
-                          color: currentTab == 1 ? Color(0xFFD1B7A1) : Colors.grey,
+                          size: 30,
+                          color: currentTab == 1 ? Color(0xFF6F5651) : Colors.grey,
                         ),
-                        Text(
+                        /*Text(
                           'Gestational Age',
                           style: TextStyle(
-                              fontSize: 12,
-                              color: currentTab == 1 ? Color(0xFFD1B7A1) : Colors.grey),
-                        )
+                              fontSize: 10,
+                              color: currentTab == 1 ? Color(0xFFF8CBA6) : Colors.grey),
+                        )*/
                       ],
                     ),
                   )
@@ -107,7 +150,7 @@ class _BottomNavAppState extends State<BottomNavApp> {
                 children: [
                   // Delivery Mode icon
                   MaterialButton(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
@@ -120,23 +163,23 @@ class _BottomNavAppState extends State<BottomNavApp> {
                       children: [
                         Icon(
                           Icons.baby_changing_station,
-                          size: 20,
-                          color: currentTab == 2 ? Color(0xFFD1B7A1) : Colors.grey,
+                          size: 30,
+                          color: currentTab == 2 ? Color(0xFF6F5651) : Colors.grey,
                         ),
-                        Text(
+                        /*Text(
                           'Delivery Mode',
                           style: TextStyle(
-                              fontSize: 12,
-                              color: currentTab == 2 ? Color(0xFFD1B7A1) : Colors.grey
+                              fontSize: 10,
+                              color: currentTab == 2 ? Color(0xFFF8CBA6) : Colors.grey
                           ),
-                        )
+                        )*/
                       ],
                     ),
                   ),
 
                   // Diet icon
                   MaterialButton(
-                    padding: EdgeInsets.symmetric(horizontal: 22),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
@@ -149,16 +192,16 @@ class _BottomNavAppState extends State<BottomNavApp> {
                       children: [
                         Icon(
                           Icons.local_dining,
-                          size: 20,
-                          color: currentTab == 3 ? Color(0xFFD1B7A1) : Colors.grey,
+                          size: 30,
+                          color: currentTab == 3 ? Color(0xFF6F5651) : Colors.grey,
                         ),
-                        Text(
+                        /*Text(
                           'Diet',
                           style: TextStyle(
                               fontSize: 12,
-                              color: currentTab == 3 ? Color(0xFFD1B7A1) : Colors.grey
+                              color: currentTab == 3 ? Color(0xFFF8CBA6) : Colors.grey
                           ),
-                        )
+                        )*/
                       ],
                     ),
                   )
