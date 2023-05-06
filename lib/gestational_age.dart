@@ -121,38 +121,6 @@ class _GestationalAgeState extends State<GestationalAge> {
                   height: 15,
                 ),
 
-                // Ethnicity
-                TextFormField(
-                  autofocus: false,
-                  validator: (val) => val!.isEmpty ? "Enter a value" : null,
-                  onChanged: (val) {
-                    setState(() => eth = val);
-                  },
-                  decoration: InputDecoration(
-                    labelText: "Ethnicity",
-
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50),
-                      borderSide: BorderSide(
-                        color: Colors.black,
-                        width: 1,
-                      ),
-                    ),
-
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(50),
-                      borderSide: BorderSide(
-                        color: Colors.brown,
-                        width: 1 ,
-                      ),
-                    ),
-                  ),
-                ),
-
-                SizedBox(
-                  height: 15,
-                ),
-
                 // Biparietal Diameter
                 TextFormField(
                   autofocus: false,
